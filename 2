@@ -1,0 +1,226 @@
+plot(dose,druga,type="b",
+col="red",lty=2,pch=2,lwd=2,
+ann=FALSE,
+main="clinical trials for druga",
+sub="this is hypothetical data",
+xlab="dosage",ylab="drug response",
+xlim=c(0,60),ylim=c(0,70))
+title(main="main title", sub="subtitle",
+xlab="x label", ylab="y lable")
+title(main="my title", col.main="red",
+sub="my subtitle", col.sub="blue",
+xlab="my a lable",ylab="my y lable",
+col.lab="green", cex.lab=0.75)
+x<-c(1:10)
+y<-x
+z<-10/x
+opar<-par(no.readonly=TRUE)
+par(mar=c(5,4,4,8)+0.1)
+plot(x,y,type="b",
+pch=21,col="red",
+yaxt="n",lty=3,ann=FALSE)
+lines(x,z,type="b",pch=22,col="blue",lty=2)
+axis(2,at=x,labels=x,col.axis="red",las=2)
+axis(4,at=z,labels=round(z,digits=2),
+col.axis="blue",las=2,cex.axis=0.7,tck=-0.01)
+mtext("y=1/x",side=4,line=3,cex.lab=1,las=2,col="blue")
+title("an example of creative axes",
+xlab="x values",
+ylab="y=x")
+abline(y=c(1,5,7),x=seq(1,10,2),lty=2,col="blue")
+dose<-c(20,30,40,45,60)
+druga<-c(16,20,27,40,60)
+drugb<-c(15,18,25,31,40)
+opar<-par(no.readonly=TRUE)
+par(lwd=2,cex=1.5,font.lab=2)
+plot(dose,druga,type="b",
+pch=15,lty=1,col="red",ylim=c(0,60),
+main="drug A vs. durg B",
+xlab="drug dosage",ylab="drug response")
+lines(dose,drugb,type="b",
+pch=17,lty=2,col="blue")
+abline(h=c(30),lwd=1.5,lty=2,col="gray")
+install.packages("Hmisc")
+library(Hmisc)
+minor.tick(nx=3,ny=3,tick.ratio=0.5)
+legend("topleft",inset=0.05,title="drug type",c("A","B"),
+lty=(1,2),pch=c(15,17),col=c("red","blue"))
+attach(mtcars)
+plot(wt,mpg,main="mileage vs. car weight",
+pch=18,col="blue")
+text(wt,mpg,rownames(mtcars),
+cex=0.6,pos=4,col="red")
+detach(mtcars)
+opar<-par(no.readonly=TRUE)
+par(cex=1.5)
+plot(1:7,1:7,type="n")
+text(3,3,"example of default text")
+text(4,4,family="mono","example of mono text")
+text(5,5,family="serif","example of serif text")
+par(opar)
+attach(mtcars)
+opar<-par(no.readonly=TRUE)
+par(mfrow=c(2,2))
+plot(wt,mpg,main="s vs.mpg")
+plot(wt,disp,main="s vs.disp")
+hist(wt,main="histogram of wt")
+boxplot(wt,main="boxplot of wt")
+par(opar)
+detach(mtcars)
+attach(mtcars)
+opar<-par(no.readonly=TRUE)
+par(mfrow=c(3,1))
+hist(wt)
+hist(mpg)
+hist(disp)
+par(opar)
+detach(mtcars)
+attach(mtcars)
+layout(matrix(c(1,1,2,3),2,2,byrow=TRUE),
+widths=c(3,1),heights=c(1,2))
+hist(wt)
+hist(mpg)
+hist(disp)
+detach(mtcars)
+opar<-par(no.readonly=TRUE)
+par(fig=c(0,0.8,0,0.8))
+attach(mtcars)
+plot(wt,mpg,xlab="m p g",ylab="car weight")
+par(fig=c(0,0.8,0.55,1),new=TRUE)
+boxplot(wt,horizontal=TRUE,axes=FALSE)
+par(fig=c(0.65,1,0,0.8),new=TRUE)
+boxplot(mpg,axes=FALSE)
+mtext("Enhanced Sactterplot",side=3,outer=TRUE,line=-3)
+par(opar)
+date<-c("10/24/08","10/28/08","10/01/08","10/12/14","05/01/14")
+manager<-c(1,2,3,4,5)
+country<-c("US","US","UK","UK","UK")
+gender<-c("M","F","F","M","F")
+age<-c(32,45,34,25,99)
+q1<-c(5,4,5,5,5)
+q2<-c(4,5,5,3,2)
+q3<-c(5,2,5,4,1)
+q4<-c(5,5,5,NA,2)
+q5<-c(5,5,2,NA,1)
+leadership<-data.frame(manager,date,country,gender,age,q1,q2,q3,q4,q5,
+stringsAsFactors=FALSE)
+leadership
+
+
+
+
+
+
+
+
+
+mydata<-data.frame(x1=c(2,2,6,4),x2=c(3,4,2,8))
+mydata$sumx<-mydata$x1+mydata$x2
+mydata$meanx<-(mydata$x1+mydata$x2)/2
+mydata
+attach(mydata)
+mydata$sumx<-x1+x2
+mydata$meanx<-(x1+x2)/2
+detach(mydata)
+mydata<-transform(mydata,sumx=x1+x2,meanx=(x1+x2)/2)
+mydata
+manager<-c(1,2,3,4,5)
+country<-c("US","US","UK","UK","UK")
+gender<-c("M","F","F","M","F")
+age<-c(32,45,34,25,99)
+q1<-c(5,4,5,5,5)
+q2<-c(4,5,5,3,2)
+q3<-c(5,2,5,4,1)
+q4<-c(5,5,5,NA,2)
+q5<-c(5,5,2,NA,1)
+leadership<-data.frame(manager,country,gender,age,q1,q2,q3,q4,q5,
+stringsAsFactors=FALSE)
+leadership$age[leadership$age==99]<-NA
+leadership$agecat[leadership$age>75]<-"elder"
+leadership$agecat[leadership$age>=55&leadership$age<=75]<-"middle aged"
+leadership$agecat[leadership$age<55]<-"young"
+leadership
+leadership<-within(leadership,{
+agecat<-NA
+agecat[age>75]<-"elder"
+agecat[age>=55&age<75]<-"middle aged"
+agecat[age<55]<-"young"})
+attach(leadership)
+age[age==99]<-NA
+agecat[age>75]<-"elder"
+agecat[age>=55&age<=75]<-"middle aged"
+agecat[age<55]<-"young"
+leadership
+detach(leadership)
+fix(leadership)
+names(leadership)
+names(leadership)[2]<-"country3"
+leadership
+names(leadership)[5:9]<-c("item1","item2","item3","item4","item5")
+install.packages(plyr)
+library(plyr)
+leadership<-rename(leadership,
+c(manager="managerID",age="AGE",gender="Gender"))
+y<-c(1,2,3,NA)
+is.na(y)
+is.na(leadership[5:9])
+x<-c(1,2,3,NA)
+y<-x[1]+x[2]+x[3]+x[4]
+z<-sum(x)
+y<-sum(x,na.rm=TRUE)
+newdata<-na.omit(leadership)
+mydatas<-as.Date(c("2007-06-22","2004-02-13"))
+strdatas<-c("01/05/1965","08/16/1975")
+datas<-as.Date(strdatas,"%m/%d/%Y")
+Sys.Date()
+date()
+today<-Sys.Date()
+format(today,format="%B %d %Y")
+format(today,format="%A")
+startdate<-as.Date("1999-04-29")
+enddate<-as.Date("2020-09-20")
+days<-enddate-startdate
+days
+today<-Sys.Date()
+both<-as.Date("1999-04-29")
+difftime(today,both,units="weeks")
+format(both,format="%A")
+a<-c(1,2,3)
+a
+is.numeric(a)
+is.vector(a)
+a<-as.character(a)
+a
+is.numeric(a)
+is.vector(a)
+is.character(a)
+newdata<-leadership[order(leadership$age),]
+attach(leadership)
+newdata<-leadership[order(gender,-age),]
+detach(leadership)
+newdata<-leadership[,c(5:9)]
+myvars<-c("q1","q2","q3","q4","q5")
+newdata<-leadership[myvars]
+myvars<-paste("q",1:5,sep="")
+newdata<-leadership[myvars]
+myvars<-names(leadership)%in%c("q3","q4")
+newdata<-leadership[!myvars]
+newdata<-leadership[c(-8,-9)]
+leadership$q3<-leadership$q4<-NULL
+newdata<-leadership[1:3,]
+newdata<-leadership[leadership$gender=="M"&
+leadership$age>30,]
+attach(leadership)
+newdata<-leadership[gender=="M"&age>30,]
+detach(leadership)
+leadership$date<-as.Date(leadership$date,"%m/%d/%y")
+startdate<-as.Date("2008-01-01")
+enddate<-as.Date("2008-10-31")
+newdate<-leadership[which(leadership$date>=startdate&
+leadership$date<=enddate),]
+newdate
+newdate<-subset(leadership,age>=35|age<24,
+select=c(q1,q2,q3,q4))
+newdate<-subset(leadership,gender=="M"&age>25,
+select=gender:q4)
+mysample<-leadership[sample(1:nrow(leadership),3,replace=FALSE),] 
